@@ -31,12 +31,13 @@ fun Canvas.drawUpLineBoxMover(scale : Float, size : Float, w : Float, paint : Pa
     val sf : Float = scale.sinify()
     val sf1 : Float = sf.divideScale(0, parts)
     val sf2 : Float = sf.divideScale(1, parts)
+    val lSize : Float = size - paint.strokeWidth / 2
     save()
-    translate(size / 2 + (w / 2 - size) * sf2, 0f)
+    translate(size / 2 + (w - size) * sf2, 0f)
     drawRect(RectF(-size / 2, -size / 2, size / 2, size / 2), paint)
     save()
-    translate(0f, -size * 0.5f * sf2)
-    drawLine(-size / 2, 0f, size / 2, 0f, paint)
+    translate(0f, -size * 0.5f -size * 0.5f * sf1)
+    drawLine(-lSize / 2, 0f, lSize / 2, 0f, paint)
     restore()
     restore()
 }
