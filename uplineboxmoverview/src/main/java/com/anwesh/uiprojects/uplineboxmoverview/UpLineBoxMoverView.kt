@@ -183,4 +183,26 @@ class UpLineBoxMoverView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : UpLineBoxMoverView) {
+
+        private val animator : Animator = Animator(view)
+        private val ulbm : UpLineBoxMover = UpLineBoxMover(0)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(backColor)
+            ulbm.draw(canvas, paint)
+            animator.animate {
+                ulbm.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ulbm.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
