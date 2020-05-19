@@ -208,4 +208,13 @@ class UpLineBoxMoverView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : UpLineBoxMoverView {
+            val view : UpLineBoxMoverView = UpLineBoxMoverView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
